@@ -529,6 +529,20 @@ files = [
 ]
 
 [[package]]
+name = "demoji"
+version = "1.1.0"
+description = "Accurately remove and replace emojis in text strings"
+optional = false
+python-versions = ">=3.6"
+files = [
+    {file = "demoji-1.1.0-py3-none-any.whl", hash = "sha256:6d3256c909aea299e97fe984f827a2a060c2a8f8bfcbafa7ec9659967c5df50f"},
+    {file = "demoji-1.1.0.tar.gz", hash = "sha256:072efaeca725e6f63ab59d83abeb55b178842538ed9256455a82ebbd055ff216"},
+]
+
+[package.extras]
+ujson = ["ujson"]
+
+[[package]]
 name = "exceptiongroup"
 version = "1.2.1"
 description = "Backport of PEP 654 (exception groups)"
@@ -2305,4 +2319,4 @@ testing = ["big-O", "jaraco.functools", "jaraco.itertools", "more-itertools", "p
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "aeca734e39938cbd21c33d5ddd29847336ed32bec1e190b1c8d066ff8f1d9057"
+content-hash = "fe759c53083131eb0b07e986a2a998cbf639790bb95cf3383a78d066ae726886"
