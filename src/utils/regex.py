@@ -23,7 +23,8 @@ def uncaptured_group(regex: str) -> str:
 
 
 def follow_regex(regex: str, regex_obj: str) -> str:
-    """特定テンプレートの後にパターンが来るようなパターンについて作成する関数。後読みを用いてマッチ
+    """特定テンプレートの後にパターンが来るようなパターンについて作成する関数。
+    regex_objの末尾位置にマッチしその後regexが続くかどうかを調べる
 
     Args:
         regex (str): 正規表現パターン
@@ -35,8 +36,23 @@ def follow_regex(regex: str, regex_obj: str) -> str:
     return r"(?<=" + regex_obj + r")" + regex
 
 
+def not_follow_regex(regex: str, regex_obj: str) -> str:
+    """特定テンプレート以外の後にパターンが来るようなパターンについて作成する関数。
+    regex_obj以外の末尾以外にマッチしその後regexが続くかどうかを調べる
+
+    Args:
+        regex (str): 正規表現パターン
+        regex_obj (str): regexの前に来てはいけない正規表現パターン
+
+    Returns:
+        str: regex_obj+regexとなるようなregex以外のegexについてマッチするような正規表現パターン。regex_objは固定長さでないといけない。
+    """
+    return r"(?<!" + regex_obj + r")" + regex
+
+
 def precede_regex(regex: str, regex_obj: str) -> str:
-    """特定テンプレートの前にパターンが来るようなパターンについて作成する関数。先読みを用いてマッチ
+    """特定テンプレートの前にパターンが来るようなパターンについて作成する関数。
+    regex_objの先頭位置にマッチしその後ろがregexかどうかを調べる
 
     Args:
         regex (str): 正規表現パターン
@@ -45,7 +61,21 @@ def precede_regex(regex: str, regex_obj: str) -> str:
     Returns:
         str: regex+regex_objとなるようなregexをマッチするような正規表現パターン。
     """
-    return r"(?=" + regex + r")" + regex_obj
+    return regex + r"(?=" + regex_obj + r")"
+
+
+def not_precede_regex(regex: str, regex_obj: str) -> str:
+    """特定テンプレートの以外の前にパターンが来るようなパターンについて作成する関数。
+    regex_obj以外の先頭位置にマッチしその後ろがregexかどうかを調べる
+
+    Args:
+        regex (str): 正規表現パターン
+        regex_obj (str): regexの後に来てはいけない正規表現パターン
+
+    Returns:
+        str: regex+regex_objとならないようなregexをマッチするような正規表現パターン。
+    """
+    return regex + r"(?!" + regex_obj + r")"
 
 
 def concat_regex(regexes: list[str]) -> str:
