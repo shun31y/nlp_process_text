@@ -23,7 +23,7 @@ def uncaptured_group(regex: str) -> str:
 
 
 def follow_regex(regex: str, regex_obj: str) -> str:
-    """特定テンプレートの後にパターンが来るようなパターンについて作成する関数
+    """特定テンプレートの後にパターンが来るようなパターンについて作成する関数。後読みを用いてマッチ
 
     Args:
         regex (str): 正規表現パターン
@@ -33,6 +33,19 @@ def follow_regex(regex: str, regex_obj: str) -> str:
         str: regex_obj+regexとなるようなregexをマッチするような正規表現パターン。regex_objは固定長さでないといけない。
     """
     return r"(?<=" + regex_obj + r")" + regex
+
+
+def precede_regex(regex: str, regex_obj: str) -> str:
+    """特定テンプレートの前にパターンが来るようなパターンについて作成する関数。先読みを用いてマッチ
+
+    Args:
+        regex (str): 正規表現パターン
+        regex_obj (str): regexの後に来る正規表現パターン
+
+    Returns:
+        str: regex+regex_objとなるようなregexをマッチするような正規表現パターン。
+    """
+    return r"(?=" + regex + r")" + regex_obj
 
 
 def concat_regex(regexes: list[str]) -> str:
