@@ -38,7 +38,7 @@ def follow_regex(regex: str, regex_obj: str) -> str:
 
 def not_follow_regex(regex: str, regex_obj: str) -> str:
     """特定テンプレート以外の後にパターンが来るようなパターンについて作成する関数。
-    regex_obj以外の末尾以外にマッチしその後regexが続くかどうかを調べる
+    regex_obj以外の末尾位置にマッチしその後regexが続くかどうかを調べる
 
     Args:
         regex (str): 正規表現パターン
