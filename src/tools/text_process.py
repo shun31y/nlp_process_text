@@ -1,4 +1,4 @@
-from .regex import (
+from ..utils.regex import (
     captured_group,
     uncaptured_group,
     concat_regex,
